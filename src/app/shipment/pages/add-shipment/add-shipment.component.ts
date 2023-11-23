@@ -12,6 +12,8 @@ import { Router } from '@angular/router';
 import { routes } from 'src/app/app-routing.module';
 import { Destination } from '../../model/destination';
 import { DestinationService } from '../../services/destination.service';
+import { Tracking } from '../../model/shipmentBackend';
+import { TrackingService } from '../../services/tracking.service';
 
 
 
@@ -87,6 +89,7 @@ export class AddShipmentComponent {
      private senderService: SenderService,
       private packageService:PackageService,
       private destinationService: DestinationService,
+      private trackingService: TrackingService,
       private router: Router) {
 
   }
@@ -142,6 +145,20 @@ export class AddShipmentComponent {
           this.destinationService.addDestination(destionation).subscribe((destination: any) => {
             if (destination) {
 
+
+              const tracking: Tracking = {
+                trackingId: 0,
+                latitude: '0',
+                longitude: '0',
+              };
+
+
+              this.trackingService.addTracking(tracking).subscribe((trackingBack: any) => {
+                if (trackingBack) {
+
+                console.log("Tracking ");
+                console.log(trackingBack);
+
            const shipment: Shipment = {
             id: 0,
             description: this.description,
@@ -153,8 +170,14 @@ export class AddShipmentComponent {
             consignee: this.consigneeName,
           };
 
+          console.log("All data Ids");
+          console.log(employeeId);
+          console.log(createdSender.id);
+          console.log(destination.destinationId);
+          console.log(trackingBack.trackingId);
+
           this.shipmentService
-            .addShipment(shipment, employeeId, createdSender.id.toString(), destination.destinationId.toString())
+            .addShipment(shipment, employeeId, createdSender.id.toString(), destination.destinationId.toString(), trackingBack.trackingId.toString())
             .subscribe((data: any) => {
               if (data) {
 
@@ -179,21 +202,18 @@ export class AddShipmentComponent {
               } else {
                 console.log("Backend error in addShipment");
               }
-            });
+            })
 
-
+          } else {
+            console.log("Backend error in addTracking");
+          }
+        }
+      );
             }else
             {
               console.log("Backend error in addDestination");
             }
           });
-
-
-
-
-
-
-
 
 
         } else {

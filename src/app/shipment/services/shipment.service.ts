@@ -20,9 +20,12 @@ export class ShipmentService extends TemplateService<any> {
   }
 
 
-  addShipment(shipment: Shipment, employeeId: String, senderId: String, destinationId: String): Observable<Shipment> {
-    this.basePath = 'https://sofroute.azurewebsites.net/api/v1/shipment?employeeId='+employeeId+'&senderId='+senderId+'&destinationId='+destinationId;
-    return this.create(shipment);
+  addShipment(shipment: Shipment, employeeId: String, senderId: String, destinationId: String, trackingId: String): Observable<Shipment> {
+
+    // new path https://sofroute.azurewebsites.net/api/v1/shipment?employeeId=1&senderId=2&destinationId=1&trackingId=2
+    this.basePath = 'https://sofroute.azurewebsites.net/api/v1/shipment?employeeId='+employeeId+'&senderId='+senderId+'&destinationId='+destinationId+'&trackingId='+trackingId;
+
+     return this.create(shipment);
   }
 
 

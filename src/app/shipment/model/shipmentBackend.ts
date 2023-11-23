@@ -13,4 +13,20 @@ export interface shipmentBackend {
   arrivalDate: Date;
   consignee: string;
   destination: Destination;
+  sender: Sender;
+  employee: Employee;
+  dht22: Dht22;
+  tracking: Tracking;
+}
+
+export interface Dht22 {
+  id: number;
+  temperature: string;
+  humidity: string;
+}
+
+export interface Tracking {
+  trackingId: number;
+  latitude: string;
+  longitude: string;
 }
