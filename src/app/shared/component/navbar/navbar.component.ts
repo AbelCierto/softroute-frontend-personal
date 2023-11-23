@@ -17,6 +17,11 @@ export class NavbarComponent implements OnInit{
   ngOnInit(): void {
   };
 
+  //create a logout method
+  logout() {
+    // got to this url to logout
+    window.location.href = 'https://softroute.netlify.app/';
+  }
 
 }
 
