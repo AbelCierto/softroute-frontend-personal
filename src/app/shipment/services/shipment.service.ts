@@ -12,7 +12,7 @@ import { shipmentBackend } from '../model/shipmentBackend';
 
 export class ShipmentService extends TemplateService<any> {
 
-  private shipment:Shipment | null=null;
+  private shipment:shipmentBackend | null=null;
   constructor(http:HttpClient) {
     super(http);
     this.basePath = 'https://sofroute.azurewebsites.net/api/v1/shipment';
@@ -20,7 +20,7 @@ export class ShipmentService extends TemplateService<any> {
   }
 
 
-  addShipment(shipment: Shipment, employeeId: String, senderId: String, destinationId: String, trackingId: String): Observable<Shipment> {
+  addShipment(shipment: Shipment, employeeId: String, senderId: String, destinationId: String, trackingId: String): Observable<shipmentBackend> {
 
     // new path https://sofroute.azurewebsites.net/api/v1/shipment?employeeId=1&senderId=2&destinationId=1&trackingId=2
     this.basePath = 'https://sofroute.azurewebsites.net/api/v1/shipment?employeeId='+employeeId+'&senderId='+senderId+'&destinationId='+destinationId+'&trackingId='+trackingId;

@@ -31,6 +31,8 @@ export class AddShipmentComponent {
   consigneeEmail: string='';
   selectedDate: Date=new Date();
   shipmentCode: number=0;
+  dht22Id: number=0;
+  trackingId: number=0;
 
   destinations: SelectItem[] = [
     { label: 'Cusco', value: 'Cusco' },
@@ -159,6 +161,9 @@ export class AddShipmentComponent {
                 console.log("Tracking ");
                 console.log(trackingBack);
 
+
+
+
            const shipment: Shipment = {
             id: 0,
             description: this.description,
@@ -180,6 +185,13 @@ export class AddShipmentComponent {
             .addShipment(shipment, employeeId, createdSender.id.toString(), destination.destinationId.toString(), trackingBack.trackingId.toString())
             .subscribe((data: any) => {
               if (data) {
+
+                console.log("Shipment ");
+                console.log(data.dht22);
+
+                //update dht22Id
+                this.dht22Id = data.dht22.id;
+                this.trackingId = data.tracking.trackingId;
 
                 // Create a Package object
                 const packageObj: Package = {
