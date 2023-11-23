@@ -17,7 +17,7 @@ export class SupplierProfileComponent implements OnInit{
   nombre: string = '';
   email: string = '';
   contrasena: string = '';
-  constructor( private authService: AuthService, private companyService:CompanyService ) {
+  constructor( private authService: AuthService, private employeeService:AuthService ) {
     this.user={} as Employee;
     this.companyData={} as Company;
   }
@@ -25,17 +25,18 @@ export class SupplierProfileComponent implements OnInit{
     this.getEmployee();
   }
   getCompanyById(id:number){
-    this.companyService.getById(id).subscribe((response:any)=>{
-      this.companyData=response;
+    this.employeeService.getEmployeeById(id).subscribe((response:any)=>{
+      this.user=response;
+      console.log(this.user);
     })
   }
 
   getEmployee() {
-    const user = this.authService.getEmployee();
-    if (user !== null) {
-      //this.user = user;
-      this.getCompanyById(this.user.companyId);
-    }
+    // const user = this.authService.getEmployee();
+    // if (user !== null) {
+      const employeeId = localStorage.getItem('employeeId') as string;
+      this.getCompanyById(employeeId as unknown as number);
+    //}
   }
   showDialog() {
     this.visible = true;

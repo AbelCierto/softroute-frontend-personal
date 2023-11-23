@@ -2,9 +2,9 @@
 <!-- profile.component.html -->
 <div class="profile-container">
   <div class="portada">
-    <img style="width: 100% ; height: auto;object-fit: cover;" src="{{companyData.image}}">
+    <img style="width: 100% ; height: auto;object-fit: cover;" src="https://expandcart.com/wp-content/uploads/2021/01/top-shipping-companies.jpg">
     <div class="profile-header">
-      <img class="profile-picture" src="{{user.image}}" alt="Foto de perfil">
+      <img class="profile-picture" src="https://cdn-icons-png.flaticon.com/512/9131/9131529.png" alt="Foto de perfil">
     </div>
   </div>
 
@@ -26,7 +26,7 @@
 
               <div class="flex-auto">
                 <label for="name" class="font-bold block mb-2"> Name </label>
-                <input  id="name"  class="w-full" [(ngModel)]="user.name"/>
+                <input  id="name"  class="w-full" [(ngModel)]="user.employeeName"/>
               </div>
               <div class="flex-auto">
                 <label for="email" class="font-bold block mb-2"> Email </label>
@@ -53,20 +53,19 @@
 
       </div>
       <p>
-        <i class="pi pi-user"></i> {{user.name}}
+        <i class="pi pi-user"></i>  {{user.employeeName}}
       </p>
       <p>
         <i class="pi pi-envelope"></i> {{user.email}}
       </p>
       <p>
-        <i class="pi pi-phone"></i> (+51){{user.phone}}
+        <i class="pi pi-phone"></i> (+51) 987654879
       </p>
       <p>
-        <i class="pi pi-map-marker"></i>{{companyData.address}}
+        <i class="pi pi-map-marker"></i> Virtual Assistant
       </p>
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque
-        quas!
+        Nuestra empresa de envíos se destaca por brindar a nuestros clientes la certeza de la ubicación en tiempo real y la seguridad total de sus paquetes, redefiniendo la excelencia en logística.
       </p>
     </p-card>
   </div>
